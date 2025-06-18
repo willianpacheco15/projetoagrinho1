@@ -1,0 +1,181 @@
+    /* Base styles */
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #34495e;
+      --accent-color: #2980b9;
+      --background-color: #f5f7fa;
+      --text-color: #2c3e50;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --transition-speed: 0.3s;
+      --padding: 1rem;
+      --border-radius: 5px;
+      --min-font-size: 12px; /* minimum font size */
+      --max-font-size: 20px; /* maximum font size */
+      --step-font-size: 2px;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      line-height: 1.5;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-size: 16px; /* initial font size in px */
+      transition: font-size var(--transition-speed);
+    }
+
+    /* Header */
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: var(--padding);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    header h1 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    /* Hamburger menu */
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: none;
+      flex-direction: column;
+      width: 30px;
+      height: 24px;
+      justify-content: space-between;
+      padding: 0;
+    }
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+    }
+    /* Animate hamburger when active */
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Navigation menu */
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      flex-grow: 1;
+      role: navigation;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+      position: relative;
+      transition: color var(--transition-speed);
+    }
+    nav a:focus,
+    nav a:hover {
+      color: var(--accent-color);
+      outline: 2px solid var(--accent-color);
+      outline-offset: 2px;
+    }
+
+    /* Main Content */
+    main {
+      flex-grow: 1;
+      padding: var(--padding);
+      max-width: 900px;
+      margin: 1rem auto;
+      width: 90%;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px rgb(44 62 80 / 0.1);
+    }
+
+    main section {
+      margin-bottom: 2rem;
+    }
+
+    /* Container for font toggle buttons */
+    .font-toggle-container {
+      max-width: 900px;
+      margin: 1.5rem auto 0 auto;
+      padding: 0 var(--padding);
+      display: flex;
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+
+    main section h2 {
+      font-size: 1.25rem;
+      color: var(--primary-color);
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.25rem;
+    }
+
+    main section p {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--secondary-color);
+      color: white;
+      text-align: center;
+      padding: var(--padding);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        gap: 0;
+        display: none;
+        z-index: 10;
+      }
+      nav.open {
+        display: flex;
+      }
+      nav a {
+        padding: 1rem var(--padding);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      /* Adjust font toggle container on small screens */
+      .font-toggle-container {
+        margin-left: var(--padding);
+      }
+    }
